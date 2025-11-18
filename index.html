@@ -1,1 +1,402 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Bester Yetkili Servis Formu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 14px;
+    }
+    body {
+      margin: 0;
+      padding: 16px;
+      background: #f2f2f2;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 16px 20px 32px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.08);
+    }
+    h1 {
+      font-size: 20px;
+      margin: 0 0 12px;
+    }
+    h2 {
+      font-size: 16px;
+      margin: 24px 0 8px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 4px;
+    }
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px 24px;
+    }
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    label {
+      font-weight: 600;
+    }
+    input[type="text"],
+    input[type="date"],
+    input[type="email"],
+    textarea,
+    select {
+      padding: 6px 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 13px;
+    }
+    textarea {
+      min-height: 60px;
+      resize: vertical;
+    }
+    .full-width {
+      grid-column: 1 / -1;
+    }
+    .actions {
+      grid-column: 1 / -1;
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    button {
+      border: none;
+      border-radius: 4px;
+      padding: 8px 14px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .primary {
+      background: #000;
+      color: #fff;
+    }
+    .secondary {
+      background: #eee;
+      color: #333;
+    }
+    .danger {
+      background: #c0392b;
+      color: #fff;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-top: 12px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 6px 8px;
+      text-align: left;
+    }
+    th {
+      background: #f5f5f5;
+    }
+    .table-actions button {
+      font-size: 11px;
+      padding: 4px 8px;
+      margin-right: 4px;
+    }
 
+    @media print {
+      body {
+        background: #fff;
+      }
+      .container {
+        box-shadow: none;
+      }
+      #kayıtAlanı {
+        display: none;
+      }
+      #formBaslik {
+        margin-top: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1 id="formBaslik">Bester Yetkili Servis Formu</h1>
+
+  <h2>Form</h2>
+  <form id="servisForm">
+    <div class="field">
+      <label for="tarih">Tarih</label>
+      <input type="date" id="tarih">
+    </div>
+    <div class="field">
+      <label for="isEmriNo">İş Emri No</label>
+      <input type="text" id="isEmriNo">
+    </div>
+    <div class="field">
+      <label for="marka">Marka</label>
+      <input type="text" id="marka" value="Bester">
+    </div>
+    <div class="field">
+      <label for="model">Model</label>
+      <input type="text" id="model">
+    </div>
+
+    <div class="field">
+      <label for="ad">Ad</label>
+      <input type="text" id="ad">
+    </div>
+    <div class="field">
+      <label for="soyad">Soyad</label>
+      <input type="text" id="soyad">
+    </div>
+    <div class="field">
+      <label for="telefon">Cep Telefonu</label>
+      <input type="text" id="telefon">
+    </div>
+    <div class="field">
+      <label for="email">E-posta</label>
+      <input type="email" id="email">
+    </div>
+
+    <div class="field full-width">
+      <label for="adres">Adres</label>
+      <textarea id="adres"></textarea>
+    </div>
+
+    <div class="field">
+      <label for="seriNo">Seri No</label>
+      <input type="text" id="seriNo">
+    </div>
+    <div class="field">
+      <label for="faturaTarihi">Fatura Tarihi</label>
+      <input type="date" id="faturaTarihi">
+    </div>
+    <div class="field">
+      <label for="faturaNo">Fatura No</label>
+      <input type="text" id="faturaNo">
+    </div>
+    <div class="field">
+      <label for="garantiDurumu">Garanti Durumu</label>
+      <select id="garantiDurumu">
+        <option value="">Seçiniz</option>
+        <option value="Garanti İçi">Garanti İçi</option>
+        <option value="Garanti Dışı">Garanti Dışı</option>
+      </select>
+    </div>
+
+    <div class="field full-width">
+      <label for="arizaTanimi">Müşteri Arıza Tanımı</label>
+      <textarea id="arizaTanimi"></textarea>
+    </div>
+    <div class="field full-width">
+      <label for="arizaTespiti">Arıza Tespiti</label>
+      <textarea id="arizaTespiti"></textarea>
+    </div>
+    <div class="field full-width">
+      <label for="yapilanIslem">Arızanın Giderilmesi İçin Yapılan İşlemler</label>
+      <textarea id="yapilanIslem"></textarea>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="primary" onclick="kaydet()">Kaydet</button>
+      <button type="button" class="secondary" onclick="formuTemizle()">Formu Temizle</button>
+      <button type="button" class="secondary" onclick="yazdir()">Yazdır</button>
+    </div>
+  </form>
+
+  <div id="kayıtAlanı">
+    <h2>Kayıtlar</h2>
+    <div class="actions">
+      <button type="button" class="secondary" onclick="excelAktar()">Excel'e Aktar (CSV)</button>
+      <button type="button" class="danger" onclick="tumKayitlariSil()">Tüm Kayıtları Sil</button>
+    </div>
+
+    <table id="kayitTablosu">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Tarih</th>
+        <th>İş Emri No</th>
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>Model</th>
+        <th>Seri No</th>
+        <th>Garanti</th>
+        <th>İşlem</th>
+      </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  const STORAGE_KEY = 'besterServisKayitlari';
+  let kayitlar = [];
+
+  function yukle() {
+    const data = localStorage.getItem(STORAGE_KEY);
+    if (data) {
+      try {
+        kayitlar = JSON.parse(data);
+      } catch (e) {
+        kayitlar = [];
+      }
+    }
+    tabloyuGuncelle();
+    // Tarihi bugüne set et
+    if (!document.getElementById('tarih').value) {
+      document.getElementById('tarih').valueAsNumber = Date.now() - (new Date()).getTimezoneOffset() * 60000;
+    }
+  }
+
+  function kaydet() {
+    const kayit = {
+      id: Date.now(),
+      tarih: document.getElementById('tarih').value,
+      isEmriNo: document.getElementById('isEmriNo').value,
+      marka: document.getElementById('marka').value,
+      model: document.getElementById('model').value,
+      ad: document.getElementById('ad').value,
+      soyad: document.getElementById('soyad').value,
+      telefon: document.getElementById('telefon').value,
+      email: document.getElementById('email').value,
+      adres: document.getElementById('adres').value,
+      seriNo: document.getElementById('seriNo').value,
+      faturaTarihi: document.getElementById('faturaTarihi').value,
+      faturaNo: document.getElementById('faturaNo').value,
+      garantiDurumu: document.getElementById('garantiDurumu').value,
+      arizaTanimi: document.getElementById('arizaTanimi').value,
+      arizaTespiti: document.getElementById('arizaTespiti').value,
+      yapilanIslem: document.getElementById('yapilanIslem').value
+    };
+
+    kayitlar.push(kayit);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(kayitlar));
+    tabloyuGuncelle();
+    formuTemizle(false);
+    alert('Kayıt eklendi.');
+  }
+
+  function formuTemizle(tarihiSifirla = false) {
+    const ids = [
+      'isEmriNo','marka','model','ad','soyad','telefon','email',
+      'adres','seriNo','faturaTarihi','faturaNo','garantiDurumu',
+      'arizaTanimi','arizaTespiti','yapilanIslem'
+    ];
+    ids.forEach(id => document.getElementById(id).value = '');
+    if (tarihiSifirla) {
+      document.getElementById('tarih').value = '';
+    }
+  }
+
+  function tabloyuGuncelle() {
+    const tbody = document.querySelector('#kayitTablosu tbody');
+    tbody.innerHTML = '';
+    kayitlar.forEach((k, index) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${index + 1}</td>
+        <td>${k.tarih || ''}</td>
+        <td>${k.isEmriNo || ''}</td>
+        <td>${k.ad || ''}</td>
+        <td>${k.soyad || ''}</td>
+        <td>${k.model || ''}</td>
+        <td>${k.seriNo || ''}</td>
+        <td>${k.garantiDurumu || ''}</td>
+        <td class="table-actions">
+          <button type="button" onclick="formaYukle(${k.id})">Forma Yükle</button>
+          <button type="button" onclick="kaydiSil(${k.id})">Sil</button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function formaYukle(id) {
+    const k = kayitlar.find(x => x.id === id);
+    if (!k) return;
+    document.getElementById('tarih').value = k.tarih;
+    document.getElementById('isEmriNo').value = k.isEmriNo;
+    document.getElementById('marka').value = k.marka;
+    document.getElementById('model').value = k.model;
+    document.getElementById('ad').value = k.ad;
+    document.getElementById('soyad').value = k.soyad;
+    document.getElementById('telefon').value = k.telefon;
+    document.getElementById('email').value = k.email;
+    document.getElementById('adres').value = k.adres;
+    document.getElementById('seriNo').value = k.seriNo;
+    document.getElementById('faturaTarihi').value = k.faturaTarihi;
+    document.getElementById('faturaNo').value = k.faturaNo;
+    document.getElementById('garantiDurumu').value = k.garantiDurumu;
+    document.getElementById('arizaTanimi').value = k.arizaTanimi;
+    document.getElementById('arizaTespiti').value = k.arizaTespiti;
+    document.getElementById('yapilanIslem').value = k.yapilanIslem;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    alert('Kayıt forma yüklendi. Yazdırabilirsiniz.');
+  }
+
+  function kaydiSil(id) {
+    if (!confirm('Bu kaydı silmek istediğinize emin misiniz?')) return;
+    kayitlar = kayitlar.filter(x => x.id !== id);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(kayitlar));
+    tabloyuGuncelle();
+  }
+
+  function tumKayitlariSil() {
+    if (!confirm('Tüm kayıtlar silinecek. Emin misiniz?')) return;
+    kayitlar = [];
+    localStorage.removeItem(STORAGE_KEY);
+    tabloyuGuncelle();
+  }
+
+  function excelAktar() {
+    if (!kayitlar.length) {
+      alert('Aktarılacak kayıt yok.');
+      return;
+    }
+    const headers = [
+      'Tarih','İş Emri No','Marka','Model','Ad','Soyad','Telefon',
+      'E-posta','Adres','Seri No','Fatura Tarihi','Fatura No',
+      'Garanti Durumu','Müşteri Arıza Tanımı','Arıza Tespiti','Yapılan İşlem'
+    ];
+    const rows = kayitlar.map(k => [
+      k.tarih, k.isEmriNo, k.marka, k.model, k.ad, k.soyad, k.telefon,
+      k.email, k.adres, k.seriNo, k.faturaTarihi, k.faturaNo,
+      k.garantiDurumu, temizMetin(k.arizaTanimi), temizMetin(k.arizaTespiti),
+      temizMetin(k.yapilanIslem)
+    ]);
+
+    let csv = '\uFEFF' + headers.join(';') + '\n';
+    rows.forEach(r => {
+      csv += r.map(x => (x || '').toString().replace(/;/g, ',')).join(';') + '\n';
+    });
+
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'bester-servis-kayitlari.csv';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function temizMetin(t) {
+    return (t || '').replace(/\r?\n/g, ' / ');
+  }
+
+  function yazdir() {
+    window.print();
+  }
+
+  window.addEventListener('load', yukle);
+</script>
+</body>
+</html>

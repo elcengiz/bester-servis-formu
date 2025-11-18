@@ -8,72 +8,218 @@
     :root {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-size: 14px;
+      --bester-black: #111111;
+      --bester-grey: #f2f2f2;
+      --border-color: #d0d0d0;
     }
     body {
       margin: 0;
       padding: 16px;
-      background: #f2f2f2;
+      background: var(--bester-grey);
     }
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      background: #fff;
-      padding: 16px 20px 32px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.08);
+
+    /* LOGIN OVERLAY */
+    #loginOverlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
     }
-    h1 {
-      font-size: 20px;
+    #loginBox {
+      background: #181818;
+      color: #fff;
+      padding: 24px 28px;
+      border-radius: 8px;
+      width: 320px;
+      box-shadow: 0 0 18px rgba(0,0,0,0.6);
+    }
+    #loginBox h2 {
       margin: 0 0 12px;
+      font-size: 18px;
+      text-align: center;
     }
-    h2 {
-      font-size: 16px;
-      margin: 24px 0 8px;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 4px;
+    #loginBox label {
+      font-size: 13px;
+      display: block;
+      margin-bottom: 4px;
     }
-    form {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 12px 24px;
+    #loginBox input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #444;
+      background: #222;
+      color: #fff;
+      margin-bottom: 12px;
+      font-size: 13px;
     }
-    .field {
+    #loginBox button {
+      width: 100%;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 0;
+      font-size: 14px;
+      background: #ffffff;
+      color: #000;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    #loginError {
+      color: #ff7675;
+      font-size: 12px;
+      min-height: 16px;
+      text-align: center;
+      margin-bottom: 4px;
+    }
+
+    /* ANA CONTAINER */
+    .container {
+      max-width: 210mm;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 16px 18px 30px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.12);
+    }
+
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid #000;
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+    }
+    .logo-block {
       display: flex;
       flex-direction: column;
       gap: 4px;
     }
-    label {
-      font-weight: 600;
+    .logo-box {
+      padding: 4px 8px;
+      border: 1px solid #000;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.08em;
+      display: inline-block;
     }
-    input[type="text"],
-    input[type="date"],
-    input[type="email"],
-    textarea,
-    select {
-      padding: 6px 8px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
+    .company-info {
+      font-size: 11px;
+      line-height: 1.3;
+    }
+    .form-title {
+      margin-top: 6px;
+      background: var(--bester-black);
+      color: #fff;
+      text-align: center;
+      font-weight: 700;
+      padding: 4px 0;
       font-size: 13px;
     }
-    textarea {
-      min-height: 60px;
+
+    .info-row {
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr 0.8fr;
+      gap: 0;
+      border: 1px solid var(--border-color);
+      border-top: none;
+      margin-bottom: 8px;
+      font-size: 11px;
+    }
+    .info-block {
+      border-right: 1px solid var(--border-color);
+      padding: 4px 6px 6px;
+    }
+    .info-block:last-child {
+      border-right: none;
+    }
+    .section-label {
+      font-weight: 700;
+      margin-bottom: 4px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 2px;
+      text-transform: uppercase;
+    }
+    .field-row {
+      display: grid;
+      grid-template-columns: 0.6fr 1.4fr;
+      margin-bottom: 2px;
+      align-items: center;
+    }
+    .field-row label {
+      font-size: 11px;
+    }
+    .field-row input,
+    .field-row textarea,
+    .field-row select {
+      font-size: 11px;
+      padding: 2px 4px;
+      border-radius: 2px;
+      border: 1px solid var(--border-color);
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .two-col-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--border-color);
+      border-top: none;
+      margin-bottom: 8px;
+      font-size: 11px;
+    }
+    .two-col-block {
+      border-right: 1px solid var(--border-color);
+      padding: 4px 6px 6px;
+    }
+    .two-col-block:last-child {
+      border-right: none;
+    }
+    .two-col-block textarea {
+      width: 100%;
+      min-height: 50px;
+      font-size: 11px;
+      padding: 2px 4px;
+      border-radius: 2px;
+      border: 1px solid var(--border-color);
+      box-sizing: border-box;
       resize: vertical;
     }
-    .full-width {
-      grid-column: 1 / -1;
+
+    .full-width-block {
+      border: 1px solid var(--border-color);
+      border-top: none;
+      padding: 4px 6px 6px;
+      margin-bottom: 8px;
+      font-size: 11px;
     }
+    .full-width-block textarea {
+      width: 100%;
+      min-height: 40px;
+      font-size: 11px;
+      padding: 2px 4px;
+      border-radius: 2px;
+      border: 1px solid var(--border-color);
+      box-sizing: border-box;
+      resize: vertical;
+    }
+
     .actions {
-      grid-column: 1 / -1;
-      margin-top: 8px;
+      margin: 10px 0 4px;
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
+      justify-content: flex-end;
     }
     button {
       border: none;
       border-radius: 4px;
-      padding: 8px 14px;
-      font-size: 13px;
+      padding: 6px 10px;
+      font-size: 11px;
       cursor: pointer;
+      font-weight: 600;
     }
     .primary {
       background: #000;
@@ -87,132 +233,220 @@
       background: #c0392b;
       color: #fff;
     }
+
+    /* KAYITLAR TABLOSU */
+    #recordsSection {
+      margin-top: 18px;
+      border-top: 2px solid #000;
+      padding-top: 8px;
+    }
+    #recordsSection h2 {
+      font-size: 13px;
+      margin: 0 0 6px;
+    }
+    .records-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 12px;
-      margin-top: 12px;
+      font-size: 11px;
     }
     th, td {
-      border: 1px solid #ddd;
-      padding: 6px 8px;
+      border: 1px solid var(--border-color);
+      padding: 4px 5px;
       text-align: left;
     }
     th {
       background: #f5f5f5;
     }
     .table-actions button {
-      font-size: 11px;
-      padding: 4px 8px;
-      margin-right: 4px;
+      font-size: 10px;
+      padding: 2px 6px;
+      margin-right: 2px;
     }
 
+    @media (max-width: 768px) {
+      .header-row {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .info-row {
+        grid-template-columns: 1fr;
+      }
+      .two-col-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* PRINT */
     @media print {
       body {
-        background: #fff;
+        background: #ffffff;
+        padding: 0;
       }
       .container {
+        max-width: 100%;
+        margin: 0;
         box-shadow: none;
+        padding: 10mm 12mm;
       }
-      #kayıtAlanı {
-        display: none;
+      #recordsSection,
+      .actions {
+        display: none !important;
       }
-      #formBaslik {
-        margin-top: 0;
+      #loginOverlay {
+        display: none !important;
+      }
+      @page {
+        size: A4;
+        margin: 10mm 10mm 12mm 10mm;
       }
     }
   </style>
 </head>
 <body>
-<div class="container">
-  <h1 id="formBaslik">Bester Yetkili Servis Formu</h1>
 
-  <h2>Form</h2>
-  <form id="servisForm">
-    <div class="field">
-      <label for="tarih">Tarih</label>
-      <input type="date" id="tarih">
-    </div>
-    <div class="field">
-      <label for="isEmriNo">İş Emri No</label>
-      <input type="text" id="isEmriNo">
-    </div>
-    <div class="field">
-      <label for="marka">Marka</label>
-      <input type="text" id="marka" value="Bester">
-    </div>
-    <div class="field">
-      <label for="model">Model</label>
-      <input type="text" id="model">
-    </div>
+<!-- GİRİŞ EKRANI -->
+<div id="loginOverlay">
+  <div id="loginBox">
+    <h2>Bester Servis Paneli</h2>
+    <label for="loginPassword">Şifre</label>
+    <input type="password" id="loginPassword" placeholder="Şifre">
+    <div id="loginError"></div>
+    <button type="button" onclick="handleLogin()">Giriş Yap</button>
+  </div>
+</div>
 
-    <div class="field">
-      <label for="ad">Ad</label>
-      <input type="text" id="ad">
-    </div>
-    <div class="field">
-      <label for="soyad">Soyad</label>
-      <input type="text" id="soyad">
-    </div>
-    <div class="field">
-      <label for="telefon">Cep Telefonu</label>
-      <input type="text" id="telefon">
-    </div>
-    <div class="field">
-      <label for="email">E-posta</label>
-      <input type="email" id="email">
+<div class="container" id="app" style="display:none;">
+  <!-- YAZDIRILACAK ALAN (FORM) -->
+  <div class="print-area">
+    <div class="header-row">
+      <div class="logo-block">
+        <div class="logo-box">Bester</div>
+        <div class="company-info">
+          EHM Elektronik Hizmetler San. ve Tic. Ltd. Şti.<br>
+          Merkez: Adil Mah. Gülbahar Sok. No:9-17B 34935 Sultanbeyli / İstanbul<br>
+          Servis: Veysel Karani Mah. Soyak No:9A Erenköy / Kadıköy Tel: 0 216 442 2650
+        </div>
+      </div>
+      <div style="text-align:right;font-size:11px;">
+        <div>Form Kodu: <strong>BS-SRV-01</strong></div>
+        <div>Revizyon: 01</div>
+      </div>
     </div>
 
-    <div class="field full-width">
-      <label for="adres">Adres</label>
-      <textarea id="adres"></textarea>
+    <div class="form-title">YETKİLİ SERVİS FORMU</div>
+
+    <!-- ÜST BİLGİ BLOKLARI -->
+    <div class="info-row">
+      <!-- Müşteri Bilgileri -->
+      <div class="info-block">
+        <div class="section-label">Müşteri Bilgileri</div>
+        <div class="field-row">
+          <label>Tarih</label>
+          <input type="date" id="tarih">
+        </div>
+        <div class="field-row">
+          <label>Ad</label>
+          <input type="text" id="ad">
+        </div>
+        <div class="field-row">
+          <label>Soyad</label>
+          <input type="text" id="soyad">
+        </div>
+        <div class="field-row">
+          <label>Cep Telefonu</label>
+          <input type="text" id="telefon">
+        </div>
+        <div class="field-row">
+          <label>E-posta</label>
+          <input type="email" id="email">
+        </div>
+        <div class="field-row">
+          <label>Adres</label>
+          <input type="text" id="adres">
+        </div>
+      </div>
+
+      <!-- Cihaz Bilgileri -->
+      <div class="info-block">
+        <div class="section-label">Cihaz Bilgileri</div>
+        <div class="field-row">
+          <label>Marka</label>
+          <input type="text" id="marka" value="Bester">
+        </div>
+        <div class="field-row">
+          <label>Model</label>
+          <input type="text" id="model">
+        </div>
+        <div class="field-row">
+          <label>Seri No</label>
+          <input type="text" id="seriNo">
+        </div>
+        <div class="field-row">
+          <label>Garanti Durumu</label>
+          <select id="garantiDurumu">
+            <option value="">Seçiniz</option>
+            <option value="Garanti İçi">Garanti İçi</option>
+            <option value="Garanti Dışı">Garanti Dışı</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Servis Bilgileri -->
+      <div class="info-block">
+        <div class="section-label">Servis Bilgileri</div>
+        <div class="field-row">
+          <label>İş Emri No</label>
+          <input type="text" id="isEmriNo">
+        </div>
+        <div class="field-row">
+          <label>Fatura Tarihi</label>
+          <input type="date" id="faturaTarihi">
+        </div>
+        <div class="field-row">
+          <label>Fatura No</label>
+          <input type="text" id="faturaNo">
+        </div>
+      </div>
     </div>
 
-    <div class="field">
-      <label for="seriNo">Seri No</label>
-      <input type="text" id="seriNo">
-    </div>
-    <div class="field">
-      <label for="faturaTarihi">Fatura Tarihi</label>
-      <input type="date" id="faturaTarihi">
-    </div>
-    <div class="field">
-      <label for="faturaNo">Fatura No</label>
-      <input type="text" id="faturaNo">
-    </div>
-    <div class="field">
-      <label for="garantiDurumu">Garanti Durumu</label>
-      <select id="garantiDurumu">
-        <option value="">Seçiniz</option>
-        <option value="Garanti İçi">Garanti İçi</option>
-        <option value="Garanti Dışı">Garanti Dışı</option>
-      </select>
+    <!-- ARIZA -->
+    <div class="two-col-row">
+      <div class="two-col-block">
+        <div class="section-label">Müşteri Arıza Tanımı</div>
+        <textarea id="arizaTanimi"></textarea>
+      </div>
+      <div class="two-col-block">
+        <div class="section-label">Arıza Tespiti</div>
+        <textarea id="arizaTespiti"></textarea>
+      </div>
     </div>
 
-    <div class="field full-width">
-      <label for="arizaTanimi">Müşteri Arıza Tanımı</label>
-      <textarea id="arizaTanimi"></textarea>
-    </div>
-    <div class="field full-width">
-      <label for="arizaTespiti">Arıza Tespiti</label>
-      <textarea id="arizaTespiti"></textarea>
-    </div>
-    <div class="field full-width">
-      <label for="yapilanIslem">Arızanın Giderilmesi İçin Yapılan İşlemler</label>
+    <div class="full-width-block">
+      <div class="section-label">Arızanın Giderilmesi İçin Yapılan İşlemler</div>
       <textarea id="yapilanIslem"></textarea>
     </div>
 
+    <!-- FORM İÇİ BUTONLAR -->
     <div class="actions">
       <button type="button" class="primary" onclick="kaydet()">Kaydet</button>
-      <button type="button" class="secondary" onclick="formuTemizle()">Formu Temizle</button>
       <button type="button" class="secondary" onclick="yazdir()">Yazdır</button>
+      <button type="button" class="secondary" onclick="indirPdf()">PDF İndir</button>
+      <button type="button" class="secondary" onclick="formuTemizle()">Formu Temizle</button>
     </div>
-  </form>
+  </div>
 
-  <div id="kayıtAlanı">
+  <!-- KAYITLAR BÖLÜMÜ -->
+  <div id="recordsSection">
     <h2>Kayıtlar</h2>
-    <div class="actions">
-      <button type="button" class="secondary" onclick="excelAktar()">Excel'e Aktar (CSV)</button>
+    <div class="records-actions">
+      <button type="button" class="secondary" onclick="excelAktarXlsx()">Excel'e Aktar (.xlsx)</button>
+      <button type="button" class="secondary" onclick="excelAktarCsv()">Excel'e Aktar (.csv)</button>
       <button type="button" class="danger" onclick="tumKayitlariSil()">Tüm Kayıtları Sil</button>
     </div>
 
@@ -235,11 +469,43 @@
   </div>
 </div>
 
+<!-- DIŞ KÜTÜPHANELER: SheetJS & html2pdf -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
+
 <script>
   const STORAGE_KEY = 'besterServisKayitlari';
+  const LOGIN_KEY = 'besterServisLoggedIn';
+  const APP_PASSWORD = 'bester2025'; // BURAYI KENDİ ŞİFRENLE DEĞİŞTİR
+
+  // Google Sheets Apps Script URL (3. adım için)
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwrSFezn_xH1QwsdkLFYP7EO0aopovtxLu0EPNPnCB5iXhZwzpzHGZ300NKP3so6EaTvQ/exec'; // Hazır olduğunda buraya kendi URL'ni yaz
+
   let kayitlar = [];
 
-  function yukle() {
+  function handleLogin() {
+    const pwd = document.getElementById('loginPassword').value;
+    const error = document.getElementById('loginError');
+
+    if (pwd === APP_PASSWORD) {
+      sessionStorage.setItem(LOGIN_KEY, '1');
+      document.getElementById('loginOverlay').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+      initApp();
+    } else {
+      error.textContent = 'Hatalı şifre.';
+    }
+  }
+
+  function checkLogin() {
+    if (sessionStorage.getItem(LOGIN_KEY) === '1') {
+      document.getElementById('loginOverlay').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+      initApp();
+    }
+  }
+
+  function initApp() {
     const data = localStorage.getItem(STORAGE_KEY);
     if (data) {
       try {
@@ -249,9 +515,10 @@
       }
     }
     tabloyuGuncelle();
-    // Tarihi bugüne set et
-    if (!document.getElementById('tarih').value) {
-      document.getElementById('tarih').valueAsNumber = Date.now() - (new Date()).getTimezoneOffset() * 60000;
+
+    const tarihInput = document.getElementById('tarih');
+    if (!tarihInput.value) {
+      tarihInput.valueAsNumber = Date.now() - (new Date()).getTimezoneOffset() * 60000;
     }
   }
 
@@ -281,12 +548,18 @@
     tabloyuGuncelle();
     formuTemizle(false);
     alert('Kayıt eklendi.');
+
+    // Google Sheets'e gönder (eğer URL tanımlıysa)
+    if (GOOGLE_SCRIPT_URL) {
+      saveToGoogleSheets(kayit);
+    }
   }
 
   function formuTemizle(tarihiSifirla = false) {
     const ids = [
-      'isEmriNo','marka','model','ad','soyad','telefon','email',
-      'adres','seriNo','faturaTarihi','faturaNo','garantiDurumu',
+      'ad','soyad','telefon','email','adres',
+      'marka','model','seriNo','isEmriNo',
+      'faturaTarihi','faturaNo','garantiDurumu',
       'arizaTanimi','arizaTespiti','yapilanIslem'
     ];
     ids.forEach(id => document.getElementById(id).value = '');
@@ -355,7 +628,50 @@
     tabloyuGuncelle();
   }
 
-  function excelAktar() {
+  function temizMetin(t) {
+    return (t || '').replace(/\r?\n/g, ' / ');
+  }
+
+  /* XLSX EXPORT */
+  function excelAktarXlsx() {
+    if (!kayitlar.length) {
+      alert('Aktarılacak kayıt yok.');
+      return;
+    }
+    const data = [];
+    const headers = [
+      'Tarih','İş Emri No','Marka','Model','Ad','Soyad','Telefon',
+      'E-posta','Adres','Seri No','Fatura Tarihi','Fatura No',
+      'Garanti Durumu','Müşteri Arıza Tanımı','Arıza Tespiti','Yapılan İşlem'
+    ];
+    data.push(headers);
+
+    kayitlar.forEach(k => {
+      data.push([
+        k.tarih, k.isEmriNo, k.marka, k.model, k.ad, k.soyad, k.telefon,
+        k.email, k.adres, k.seriNo, k.faturaTarihi, k.faturaNo,
+        k.garantiDurumu, temizMetin(k.arizaTanimi),
+        temizMetin(k.arizaTespiti), temizMetin(k.yapilanIslem)
+      ]);
+    });
+
+    const worksheet = XLSX.utils.aoa_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'ServisKayitlari');
+    const wbout = XLSX.write(workbook, {bookType:'xlsx', type:'array'});
+    const blob = new Blob([wbout], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'bester-servis-kayitlari.xlsx';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  /* CSV EXPORT (yedek) */
+  function excelAktarCsv() {
     if (!kayitlar.length) {
       alert('Aktarılacak kayıt yok.');
       return;
@@ -368,8 +684,8 @@
     const rows = kayitlar.map(k => [
       k.tarih, k.isEmriNo, k.marka, k.model, k.ad, k.soyad, k.telefon,
       k.email, k.adres, k.seriNo, k.faturaTarihi, k.faturaNo,
-      k.garantiDurumu, temizMetin(k.arizaTanimi), temizMetin(k.arizaTespiti),
-      temizMetin(k.yapilanIslem)
+      k.garantiDurumu, temizMetin(k.arizaTanimi),
+      temizMetin(k.arizaTespiti), temizMetin(k.yapilanIslem)
     ]);
 
     let csv = '\uFEFF' + headers.join(';') + '\n';
@@ -388,15 +704,40 @@
     URL.revokeObjectURL(url);
   }
 
-  function temizMetin(t) {
-    return (t || '').replace(/\r?\n/g, ' / ');
+  /* PDF İNDİRME */
+  function indirPdf() {
+    const element = document.querySelector('.print-area');
+    if (!element) return;
+    const opt = {
+      margin:       10,
+      filename:     'bester-servis-formu.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2 },
+      jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+    html2pdf().set(opt).from(element).save();
   }
 
   function yazdir() {
     window.print();
   }
 
-  window.addEventListener('load', yukle);
+  /* Google Sheets'e gönderim (3. adım) */
+  function saveToGoogleSheets(kayit) {
+    fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(kayit)
+    }).catch(err => {
+      // Sessiz fail – uygulamayı bozmadan geç
+      console.log('Sheets hatası:', err);
+    });
+  }
+
+  window.addEventListener('load', checkLogin);
 </script>
 </body>
 </html>
